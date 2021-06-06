@@ -1,24 +1,18 @@
 import { combineReducers } from 'redux'
-import { ADD_TODO } from '../actions/actions'
+import { ADD_TODO, DELETE_TODO } from '../actions/actions';
 
-function todo(state, action) {
-    switch (action.type) {
-        case ADD_TODO:
-            return {
-                id: action.id,
-                text: action.text,
-            }
-        default:
-            return state
-    }
-}
 function todos(state = [], action) {
     switch (action.type) {
         case ADD_TODO:
             return [
                 ...state,
-                todo(undefined, action)
+                {
+                    id: action.id,
+                    text: action.text,
+                }
             ]
+        case DELETE_TODO:
+            return state.filter((todo) => todo.text != action.text)
         default:
             return state
     }

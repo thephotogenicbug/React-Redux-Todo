@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Todo from './Todo.js';
+import Todo from './todo'
 
 export default class TodoList extends Component {
     render() {
@@ -8,7 +8,7 @@ export default class TodoList extends Component {
                 {this.props.todos.map(todo =>
                     <Todo
                         key={todo.id}
-                        {...todo}
+                        {...todo} dispatch={this.props.dispatch}
                     />
                 )}
             </ul>
